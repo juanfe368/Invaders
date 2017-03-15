@@ -48,6 +48,14 @@ public class Enemy : MonoBehaviour {
 			puntosVida--;
 			deadEnemy();
 		}
+		else if(objColisin.tag=="Enemy"){
+			puntosVida--;
+			deadEnemy();
+		}
+		else if(objColisin.tag=="Enemy1"){
+			puntosVida--;
+			deadEnemy();
+		}
 	}
 
 	/**

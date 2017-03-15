@@ -40,6 +40,11 @@ public class Asteroide : MonoBehaviour {
 			enemyColisionado.puntosVida = 0;
 			enemyColisionado.SendMessage("deadEnemy");
 		}
+		else if(objetoColisionado.tag=="Enemy"){
+			Enemy enemyColisionado = objetoColisionado.GetComponent<Enemy>();
+			enemyColisionado.puntosVida = 0;
+			enemyColisionado.SendMessage("deadEnemy");
+		}
 		else if(objetoColisionado.tag=="disparo1"){
 			puntosEnemy--;
 			if(puntosEnemy==0){
