@@ -13,9 +13,11 @@ public class Enemy : MonoBehaviour {
 	public int puntosEnemy;
 	public GameObject gameObjScoreGame;
 	private Score scoreText;
+	private GeneratorDisparo generatorDisparo;
 	// Use this for initialization
 	void Start () {
 		scoreText = GameObject.FindGameObjectWithTag("score").GetComponent<Score>();
+		generatorDisparo = GameObject.FindGameObjectWithTag("disparador").GetComponent<GeneratorDisparo>();
 	}
 	
 	// Update is called once per frame
@@ -47,14 +49,17 @@ public class Enemy : MonoBehaviour {
 		if(objColisin.tag=="disparo1"){
 			puntosVida--;
 			deadEnemy();
+			generatorDisparo.SendMessage("hightVelocity");
 		}
 		else if(objColisin.tag=="Enemy"){
 			puntosVida--;
 			deadEnemy();
+			generatorDisparo.SendMessage("hightVelocity");
 		}
 		else if(objColisin.tag=="Enemy1"){
 			puntosVida--;
 			deadEnemy();
+			generatorDisparo.SendMessage("hightVelocity");
 		}
 	}
 
