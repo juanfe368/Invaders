@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
 	 * 2016-31-12
 	 * */
 	public void MovPlayer(){
-		//movex = Input.acceleration.x;
-		movex = Input.GetAxis("Horizontal");
+		movex = Input.acceleration.x;
+		//movex = Input.GetAxis("Horizontal");
 		if (movex == 1) {
 			animPlayer.SetBool ("movRight", true);
 			animPlayer.SetBool ("movLeft", false);

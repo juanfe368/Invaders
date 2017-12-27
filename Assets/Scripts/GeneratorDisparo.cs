@@ -9,31 +9,30 @@ public class GeneratorDisparo : MonoBehaviour {
 	public float timeInvoke;
 	public float timeMinGenerator;
 	public float timeMaxGenerator;
-	private bool stopHightGenetor;
 
 	// Use this for initialization
 	void Start () {
-		stopHightGenetor = false;
-		InvokeRepeating("GeneratorShootAutomatic", timeInitial, timeInvoke);
+		this.GenerateShoot(this.timeInitial, this.timeInvoke);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(timeInvoke>timeMaxGenerator){
-			InvokeRepeating("GeneratorShootAutomatic", timeInvoke, timeInvoke);
-		}
+		
 	}
 
 	public void GeneratorShootAutomatic(){
 		GameObject disparoGeneretor = Instantiate(disparo, transform.position, Quaternion.identity);
 	}
-
+		
 	public void hightVelocity(){
-		if(!stopHightGenetor){
-			timeInvoke -= 0.01f;
-			if(timeInvoke<=timeMinGenerator){
-				stopHightGenetor = true;
-			}
+		if(this.timeInvoke>timeMinGenerator){
+			CancelInvoke("GeneratorShootAutomatic");
+			this.timeInvoke -= 0.1f;
+			this.GenerateShoot(this.timeInvoke, this.timeInvoke);
 		}
+	}
+
+	public void GenerateShoot(float timeInitial, float timeInvoke){
+		InvokeRepeating("GeneratorShootAutomatic", timeInitial, timeInvoke);
 	}
 }

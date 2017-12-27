@@ -14,10 +14,10 @@ public class Enemy : MonoBehaviour {
 	public GameObject gameObjScoreGame;
 	private Score scoreText;
 	private GeneratorDisparo generatorDisparo;
+	private GameObject player;
 	// Use this for initialization
 	void Start () {
-		scoreText = GameObject.FindGameObjectWithTag("score").GetComponent<Score>();
-		generatorDisparo = GameObject.FindGameObjectWithTag("disparador").GetComponent<GeneratorDisparo>();
+		initEnemy();
 	}
 	
 	// Update is called once per frame
@@ -84,5 +84,13 @@ public class Enemy : MonoBehaviour {
 	void createExplosion(){
 		GameObject objExplosion = Instantiate(prefabExplosion,transform.position,Quaternion.identity);
 		Destroy(objExplosion, 1.0f);
+	}
+
+	void initEnemy(){
+		scoreText = GameObject.FindGameObjectWithTag("score").GetComponent<Score>();
+		player = GameObject.FindGameObjectWithTag ("playerMain");
+		if(player!=null){
+			generatorDisparo = GameObject.FindGameObjectWithTag("disparador").GetComponent<GeneratorDisparo>();
+		}
 	}
 }
